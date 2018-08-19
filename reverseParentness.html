@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+
+		var s = "a(bc)de(de)"
+
+		function reverseParentheses(s) {
+			var valueInBrackets = [];
+			for(var j = 0; j<s.length;j++){
+				if(s.indexOf("(") !=-1){valueInBrackets.push(j)};
+				continue;
+			}
+
+			var res = s.replace(/\(/g, ' ').replace(/\)/g, ' ');
+
+
+// создать массив с скобками можно indexOf and split
+// создать массив по разделителю =>  ()
+// delete () symbols with help of regexps in the end
+console.log(res);
+console.log(valueInBrackets);
+
+}
+
+reverseParentheses(s)
+
+
+</script>
+</body>
+</html>

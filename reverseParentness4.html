@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+		
+		var s = "abc(cba)ab(bac)c";
+
+		function reverseParentheses(s) {
+			var ss = s.split(""); // array 
+			var newArr = [];
+
+			for(var i = 0; i<ss.length;i++){   // go throught the ss array
+
+				if(ss[i] == "("){
+					var arrForReverse = [];
+					while(ss[i]){
+					i++										// go throuth the sring between ( )
+					if(ss[i] == ")") break;
+					arrForReverse.unshift(ss[i]);
+
+				}
+				for(var j = 0; j<arrForReverse.length;j++){
+					newArr.push(arrForReverse[j]);
+				}
+			}
+
+			if(ss[i] == (")")) {continue}	
+
+			newArr.push(ss[i])
+
+		}
+
+		return newArr;
+	}
+
+	console.log(reverseParentheses(s));
+
+</script>
+</body>
+</html>

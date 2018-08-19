@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+		
+		var s = "co(de(fight)s)";
+
+
+		function reverseParentheses(s) {
+// add letters in () to the arr and reverse them
+var ss = s.split("");	
+var first = ss.indexOf("(");     
+var second = ss.lastIndexOf(")");
+var secondMinFirst = second - first;
+
+if(first != -1 && second != -1){
+
+	var tempArr = ss.slice(first, second+1);
+	tempArr.splice(tempArr.length-1,1);
+	tempArr.splice(0,1);	
+	var tempArr2  = [];
+	var parenthesesPosL = [];
+	var paretnhesesPosR = [];
+
+	for(var j = 0; j<tempArr.length;j++){
+		if(tempArr[j] == ("(")) {
+			parenthesesPosL.push(j)
+			continue
+		}
+
+		if(tempArr[j] == (")")){
+			paretnhesesPosR.push(j)
+			continue
+		}
+
+		tempArr2.push(tempArr[j]);
+	}
+
+	tempArr2.reverse();
+
+	for(var l = 0; l<parenthesesPosL.length; l++){
+		tempArr2.splice(parenthesesPosL[l]-1, 0, "(") // SOMETHING WRONG HERE
+	}
+
+	for(var r = 0; r<paretnhesesPosR.length; r++){
+		tempArr2.splice(paretnhesesPosR[r]-1, 0, ")");
+	}
+
+	//var tempArr = ss.slice(first, second+1).reverse(); // we need change this part for loop because of the )(
+	ss.splice(first, secondMinFirst+1, tempArr2.join("") ) // you lose ed(last 2 letters because you delete all arrey after first argument)
+}
+
+
+if(ss.join("").indexOf("(")!=-1 && ss.join("").lastIndexOf(")")!= -1){
+	return reverseParentheses(ss.join(""));
+}
+
+
+return ss.join("");
+
+}
+
+console.log(reverseParentheses(s));
+
+</script>
+</body>
+</html>
